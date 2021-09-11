@@ -42,12 +42,14 @@
     "soap": "^0.40.0",
     "stripe": "^8.142.0",
     "url": "^0.11.0",
-    "xss-clean": "^0.1.1"
-  },
-  "devDependencies": {
+    "xss-clean": "^0.1.1",
     "config": "^3.3.2",
     "eslint": "^7.20.0",
     "nodemon": "^2.0.6"
+  },
+  "devDependencies": {
+   
+  
   },
   "keywords": [],
   "description": ""
