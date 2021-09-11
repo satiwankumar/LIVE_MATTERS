@@ -1,5 +1,5 @@
 {
-  "MongoURI": "mongodb://localhost:27017/livesmatter",
+  "MongoURI": "mongodb+srv://admin:admin123@livesmatter.jpcr8.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
   "jwtSecret": "jwtSecret",
   "privatekey" :""
 }

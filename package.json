@@ -34,14 +34,14 @@
     "moment": "^2.29.1",
     "mongoose": "^5.10.15",
     "nodemailer": "^6.4.16",
+    "nodemon": "^2.0.12",
     "path": "^0.12.7",
     "qrcode": "^1.4.4",
     "request": "^2.88.2",
     "soap": "^0.40.0",
     "stripe": "^8.142.0",
     "url": "^0.11.0",
-    "xss-clean": "^0.1.1",
-    "nodemon": "^2.0.12"
+    "xss-clean": "^0.1.1"
   },
   "devDependencies": {
     "config": "^3.3.2",
