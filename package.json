@@ -1,5 +1,52 @@
 {
+  "name": "livesmatter",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "config": "^3.3.6"
-  }
+    "adm-zip": "^0.5.5",
+    "axios": "^0.21.0",
+    "base-64": "^1.0.0",
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
+    "connect-multiparty": "^2.2.0",
+    "consolidate": "^0.16.0",
+    "cors": "^2.8.5",
+    "del": "^6.0.0",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-mongo-sanitize": "^2.1.0",
+    "express-validator": "^6.6.1",
+    "fcm-node": "^1.5.2",
+    "fs": "^0.0.1-security",
+    "functional-pipelines": "^1.2.1",
+    "helmet": "^4.6.0",
+    "is-base64": "^1.1.0",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.1",
+    "mongoose": "^5.10.15",
+    "nodemailer": "^6.4.16",
+    "path": "^0.12.7",
+    "qrcode": "^1.4.4",
+    "request": "^2.88.2",
+    "soap": "^0.40.0",
+    "stripe": "^8.142.0",
+    "url": "^0.11.0",
+    "xss-clean": "^0.1.1"
+  },
+  "devDependencies": {
+    "config": "^3.3.2",
+    "eslint": "^7.20.0",
+    "nodemon": "^2.0.6"
+  },
+  "keywords": [],
+  "description": ""
 }
