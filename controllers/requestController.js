@@ -24,7 +24,16 @@ exports.CREATE_REQUEST =  async (req, res) => {
      
       project,
       partner_type,
-      description
+      description,
+      firstname,
+        lastname,
+        email ,
+        gender,
+        occupation,
+        phone_no,
+        message ,
+   
+     
     
     } = req.body;
 
@@ -36,17 +45,25 @@ exports.CREATE_REQUEST =  async (req, res) => {
     try {
       const requests = await requestModel.find({
         project: project,
-        user: req.user._id,
-        partner_type:partner_type
+        // user: req.user._id,
+        partner_type:partner_type,
+        
       });
       if (requests.length)
         return res.json({ message: 'You have already sent Request on this Project' });
 
       let request = new requestModel({
-        user: req.user._id,
+        // user: req.user._id,
         project:project,
         partner_type:partner_type,
-        description:description?description:null
+        description:description?description:null,
+        firstname:firstname?firstname:null,
+        lastname: lastname?lastname:null,
+        email :   email ?email:null,
+        gender:   gender?gender:null,
+        occupation:occupation?occupation:null,
+        phone_no: phone_no?phone_no:null,
+        message : message ?message:null,
       });
      
 

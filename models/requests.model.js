@@ -22,12 +22,56 @@ const requestSchema = new mongoose.Schema({
         default:null
     },
     description:{
-        type:String
+        type:String,
+        default:null
+
     },
-    user:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: user
-    }
+    first_name : {
+        type:String,
+        default:null
+
+        
+    },
+   
+    
+
+    lastname : {
+        type:String,
+        default:null
+
+        
+    },
+    email:{
+        type:String,
+        default:null
+
+    },
+    gender:{
+        type:String,
+        default:null
+
+    },
+    occupation:{
+            type:String,
+        default:null
+
+        },
+    phone_no:{
+            type:String,
+        default:null
+
+        },
+    message : {
+            type:String,
+        default:null
+
+        },
+   
+   
+    // user:{
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: user
+    // }
 
 });
 

@@ -11,12 +11,10 @@ const requestController = require("../controllers/requestController");
 router.post(
     "/create",
     [
-      auth,
-      admin,
       [
         check("partner_type", "partner_type is required").not().isEmpty(),
         check("project", "project is required").not().isEmpty(),
-        check("description", "description is required").not().isEmpty(),
+        // check("description", "description is required").not().isEmpty(),
       ],
     ],
     requestController.CREATE_REQUEST
