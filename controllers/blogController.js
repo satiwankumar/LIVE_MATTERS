@@ -8,8 +8,14 @@ const { validationResult } = require("express-validator");
 const blogModel = require("../models/blog.model");
 const moment = require("moment");
 var isBase64 = require("is-base64");
-
 const { GET_IMAGE_PATH } = require("../helper/helper");
+const cloudinary = require('cloudinary')
+
+cloudinary.config({ 
+  cloud_name: 'daboifufy', 
+  api_key: '291269395595355', 
+  api_secret: 'Go4sbH66ilP7Fz6Jo-oyI3FP6a8' 
+});
 
 exports.CREATE_BLOG = async (req, res, next) => {
   try {
@@ -29,18 +35,27 @@ exports.CREATE_BLOG = async (req, res, next) => {
       return res.status(400).json({ errors: error });
     }
     let pathName = "";
-    console.log(req.files)
+    // console.log(req.files)
+    var cloudinaryResult = null
     if (req.files.image) {
       pathName = await GET_IMAGE_PATH(req.files.image);
     }
 
-    blog = new blogModel({
-      title: title,
-      description: description,
-      image: pathName,
-    });
+    
 
-    await blog.save();
+ 
+    
+      const result = await cloudinary.uploader.upload(pathName)
+
+      blog =  new blogModel({
+        title: title,
+        description: description,
+        image: result.url,
+      });
+      await blog.save();
+  
+
+
 
     res.status(200).json({
       message: "Blog Created Successfully",
@@ -113,12 +128,12 @@ exports.GET_BLOGS = async (req, res) => {
       .skip(offset)
       .sort(sort);
 
-    const url = baseUrl(req);
-    blogs.forEach((item) => {
-      if (item.image) {
-        item.image = `${url}${item.image}`;
-      }
-    });
+    // const url = baseUrl(req);
+    // blogs.forEach((item) => {
+    //   if (item.image) {
+    //     item.image = `${url}${item.image}`;
+    //   }
+    // });
     const  Totalcount = await blogModel.find({ ...Datefilter,...search}).countDocuments();
     const paginate = {
       currentPage: currentpage,
@@ -146,7 +161,7 @@ exports.GET_BLOG_BY_ID = async (req, res) => {
     if (!blog)
       return res.status(400).json({ message: "Blog Detail not found" });
     const url = baseUrl(req);
-    blog.image = `${url}${blog.image}`;
+    // blog.image = `${url}${blog.image}`;
     return res.json(blog);
   } catch (err) {
     console.error(err.message);
