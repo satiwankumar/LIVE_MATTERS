@@ -7,7 +7,7 @@ const requestSchema = new mongoose.Schema({
   
     project: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: project
+        ref: 'project'
     },
     partner_type:{
         type:String,
