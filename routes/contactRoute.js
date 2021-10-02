@@ -33,6 +33,7 @@ router.post(
         firstname: req.body.firstname,
         lastname: req.body.lastname,
         email: req.body.email,
+        phone_no:req.body.phone_no,
         subject: req.body.subject,
         message: req.body.message,
 
