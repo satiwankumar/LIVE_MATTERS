@@ -12,9 +12,9 @@ const { GET_IMAGE_PATH } = require("../helper/helper");
 const cloudinary = require('cloudinary')
 
 cloudinary.config({ 
-  cloud_name: 'daboifufy', 
-  api_key: '291269395595355', 
-  api_secret: 'Go4sbH66ilP7Fz6Jo-oyI3FP6a8' 
+  cloud_name: 'all-lives-matter', 
+  api_key: '844554439773792', 
+  api_secret: 'uonObDkRBuO-G9SXcAtcEYTwY98' 
 });
 
 exports.CREATE_BLOG = async (req, res, next) => {
