@@ -56,7 +56,7 @@
                 var transporter = nodemailer.createTransport(smtpConfig);
                 var mailOptions = {
                     from: process.env.MAIL_FROM_ADDRESS, // sender address
-                    to: data.email, // list of receivers
+                    to: "alllivesmatter.fr@gmail.com", // list of receivers
                     subject: data.subject,
                     text: "CONTACT US EMAIL",
                     html: `${data}`
