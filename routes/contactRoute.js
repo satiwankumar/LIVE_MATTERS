@@ -8,12 +8,15 @@ const Contact = require("../models/contact.model");
 const admin = require("../middleware/adminMiddleware");
 const auth = require("../middleware/authMiddleware");
 const checkObjectId = require("../middleware/checkobjectId");
+const {sendContactEmail} = require("../service/email");
+
 
 router.post(
   "/",
   [
     check("firstname", "please enter firstname").not().isEmpty(),
     check("lastname", "please enter lastname").not().isEmpty(),
+    check("phone_no", "please enter phone_no").not().isEmpty(),
     check("email", "please enter email").not().isEmpty(),
     check("subject", "please enter subject").not().isEmpty(),
     check("message", "please enter messages").not().isEmpty(),
@@ -22,7 +25,7 @@ router.post(
     try {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() });
+       throw new Error(errors.toString())
       }
 
       //create new user
@@ -37,7 +40,7 @@ router.post(
       });
 
       //hash passoword
-
+      // await sendContactEmail(contact)
       await contact.save();
       res.status(200).json({
         message: "We will get back to you soon, thank you for reaching out",
