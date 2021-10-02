@@ -169,12 +169,13 @@ exports.GET_ALL_REQUESTS =  async (req, res) => {
   
       var unique = [];
     // var distinct = [];
-    for( let i = 0; i < requests.length; i++ ){
-      if( !unique[requests[i].user.image]){
-           requests[i].user.image = `${url}${requests[i].user.image}`
-        unique[requests[i].user.image] = 1;
-      }
-    }
+    
+    // for( let i = 0; i < requests.length; i++ ){
+    //   if( !unique[requests[i].user.image]){
+    //        requests[i].user.image = `${url}${requests[i].user.image}`
+    //     unique[requests[i].user.image] = 1;
+    //   }
+    // }
   let Totalcount = await requestModel.find({
 
     ...Datefilter,
