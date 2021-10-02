@@ -8,7 +8,7 @@ const Contact = require("../models/contact.model");
 const admin = require("../middleware/adminMiddleware");
 const auth = require("../middleware/authMiddleware");
 const checkObjectId = require("../middleware/checkobjectId");
-const {sendContactEmail} = require("../service/email");
+const {sendContactEmail,sendEmail} = require("../service/email");
 
 
 router.post(
@@ -40,7 +40,8 @@ router.post(
       });
 
       //hash passoword
-      // await sendContactEmail(contact)
+      let resp =await sendContactEmail(contact)
+      console.log(resp)
       await contact.save();
       res.status(200).json({
         message: "We will get back to you soon, thank you for reaching out",
