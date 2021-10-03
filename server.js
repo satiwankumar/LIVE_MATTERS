@@ -55,7 +55,16 @@ const runServer = async () => {
       },
       {
         resource: Request,
-        options: {},
+        options: {
+          properties: {
+            status: {
+              availableValues: [
+                { value: 'ACCEPTED', label: 'ACCEPTED' },
+                { value: 'REJECTED', label: 'REJECTED' },
+              ]
+            }
+          }
+        },
       },
       {
         resource: User,
