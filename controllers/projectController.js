@@ -153,8 +153,8 @@ exports.GET_PROJECT_BY_ID = async (req, res) => {
 
     if (!project)
       return res.status(400).json({ message: "Project Detail not found" });
-    const url = baseUrl(req);
-    project.image = `${url}${project.image}`;
+    // const url = baseUrl(req);
+    // project.image = `${url}${project.image}`;
     return res.json(project);
   } catch (err) {
     console.error(err.message);
