@@ -18,8 +18,11 @@ const projectSchema = new mongoose.Schema({
     status: {
         type:Boolean,
         default:true
+    },
+    image:{
+        type:String,
+        default:null
     }
-   
 
 });
 

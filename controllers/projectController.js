@@ -30,15 +30,22 @@ exports.CREATE_PROJECT = async (req, res, next) => {
       return res.status(400).json({ errors: error });
     }
     let pathName = "";
-    console.log(req.files)
+    // console.log(req.files)
+    var cloudinaryResult = null
     if (req.files.image) {
       pathName = await GET_IMAGE_PATH(req.files.image);
     }
 
+    
+
+ 
+    
+      const result = await cloudinary.uploader.upload(pathName)
     project = new projectModel({
       title: title,
       description: description,
-      type:type
+      type:type,
+      image:result.url,
     });
 
     await project.save();
