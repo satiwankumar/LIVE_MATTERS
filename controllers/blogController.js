@@ -9,13 +9,13 @@ const blogModel = require("../models/blog.model");
 const moment = require("moment");
 var isBase64 = require("is-base64");
 const { GET_IMAGE_PATH } = require("../helper/helper");
-const cloudinary = require('cloudinary')
+// const cloudinary = require('cloudinary')
 
-cloudinary.config({ 
-  cloud_name: 'all-lives-matter', 
-  api_key: '844554439773792', 
-  api_secret: 'uonObDkRBuO-G9SXcAtcEYTwY98' 
-});
+// cloudinary.config({ 
+//   cloud_name: 'all-lives-matter', 
+//   api_key: '844554439773792', 
+//   api_secret: 'uonObDkRBuO-G9SXcAtcEYTwY98' 
+// });
 
 exports.CREATE_BLOG = async (req, res, next) => {
   try {
@@ -26,7 +26,7 @@ exports.CREATE_BLOG = async (req, res, next) => {
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-    const { title, description } = req.body;
+    const { title, description,image } = req.body;
 
     // if service already exist
     let blog = await blogModel.findOne({ title });
@@ -34,23 +34,19 @@ exports.CREATE_BLOG = async (req, res, next) => {
       error.push({ message: "Blog already Exist" });
       return res.status(400).json({ errors: error });
     }
-    let pathName = "";
-    // console.log(req.files)
-    var cloudinaryResult = null
-    if (req.files.image) {
-      pathName = await GET_IMAGE_PATH(req.files.image);
-    }
-
-    
-
- 
-    
-      const result = await cloudinary.uploader.upload(pathName)
+    // let pathName = "";
+    // // console.log(req.files)
+    // var cloudinaryResult = null
+    // if (req.files.image) {
+    //   pathName = await GET_IMAGE_PATH(req.files.image);
+    // }
+        
+    //   const result = await cloudinary.uploader.upload(pathName)
 
       blog =  new blogModel({
         title: title,
         description: description,
-        image: result.url,
+        image: image,
       });
       await blog.save();
   

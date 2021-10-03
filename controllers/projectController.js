@@ -11,6 +11,13 @@ var isBase64 = require("is-base64");
 
 const { GET_IMAGE_PATH } = require("../helper/helper");
 const projectModel = require("../models/project.model");
+// const cloudinary = require('cloudinary')
+
+// cloudinary.config({ 
+//   cloud_name: 'all-lives-matter', 
+//   api_key: '844554439773792', 
+//   api_secret: 'uonObDkRBuO-G9SXcAtcEYTwY98' 
+// });
 
 exports.CREATE_PROJECT = async (req, res, next) => {
   try {
@@ -21,7 +28,7 @@ exports.CREATE_PROJECT = async (req, res, next) => {
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-    const { title, description,type } = req.body;
+    const { title, description,type,image } = req.body;
 
     // if service already exist
     let project = await projectModel.findOne({ title,type });
@@ -29,23 +36,23 @@ exports.CREATE_PROJECT = async (req, res, next) => {
       error.push({ message: "Project already Exist" });
       return res.status(400).json({ errors: error });
     }
-    let pathName = "";
-    // console.log(req.files)
-    var cloudinaryResult = null
-    if (req.files.image) {
-      pathName = await GET_IMAGE_PATH(req.files.image);
-    }
+    // let pathName = "";
+    // // console.log(req.files)
+    // var cloudinaryResult = null
+    // if (req.files.image) {
+    //   pathName = await GET_IMAGE_PATH(req.files.image);
+    // }
 
     
 
  
     
-      const result = await cloudinary.uploader.upload(pathName)
+      // const result = await cloudinary.uploader.upload(pathName)
     project = new projectModel({
       title: title,
       description: description,
       type:type,
-      image:result.url,
+      image:image,
     });
 
     await project.save();
@@ -121,12 +128,8 @@ exports.GET_PROJECTS = async (req, res) => {
       .skip(offset)
       .sort(sort);
 
-    const url = baseUrl(req);
-    projects.forEach((item) => {
-      if (item.image) {
-        item.image = `${url}${item.image}`;
-      }
-    });
+  
+ 
     const  Totalcount = await projectModel.find({ ...Datefilter,...search}).countDocuments();
     const paginate = {
       currentPage: currentpage,
