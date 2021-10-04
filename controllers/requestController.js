@@ -13,6 +13,7 @@ const { GET_IMAGE_PATH } = require("../helper/helper");
 const requestModel = require("../models/requests.model");
 const requestsModel = require("../models/requests.model");
 const { SendPushNotification } = require("../utils/Notification");
+const { sendRequestEmail } = require("../service/email");
 
 exports.CREATE_REQUEST =  async (req, res) => {
     const errors = validationResult(req);
@@ -66,8 +67,8 @@ exports.CREATE_REQUEST =  async (req, res) => {
        await request.save();
  
 
-
-  
+      await sendRequestEmail(request)
+      
    
       return res.status(200).json({
         code: 200,
