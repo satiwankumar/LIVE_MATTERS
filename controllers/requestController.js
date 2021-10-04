@@ -43,18 +43,13 @@ exports.CREATE_REQUEST =  async (req, res) => {
 
 
     try {
-      const requests = await requestModel.find({
-        project: project,
-        // user: req.user._id,
-        partner_type:partner_type,
-        
-      });
-      if (requests.length)
-        return res.json({ message: 'You have already sent Request on this Project' });
+      // const requests = await requestModel.find();
+      // if (requests.length)
+      //   return res.json({ message: 'You have already sent Request on this Project' });
 
       let request = new requestModel({
         // user: req.user._id,
-        project:project,
+        project:project?project:null,
         partner_type:partner_type,
         description:description?description:null,
         firstname:firstname?firstname:null,
