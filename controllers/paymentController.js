@@ -73,7 +73,7 @@ exports.DONATE = async (req, res) => {
 
 
 
-    res.status(200).json({ msg: "Donating SuccessFul !" });
+    res.status(200).json({ msg: "Donation SuccessFul !" });
   } catch (err) {
     throw err;
   }
