@@ -18,7 +18,11 @@ const stripe = require("stripe")("sk_test_RG4EfYiSTOT8IxuNxbeMeDiy");
 exports.DONATE = async (req, res) => {
   try {
     let {
-      user,
+     first_name,
+     last_name,
+     email,
+     city,
+     zip_code,
       charges,
       payment_method,
       card_number,
@@ -52,7 +56,11 @@ exports.DONATE = async (req, res) => {
     });
 
     const paymentLog = new paymentModel({
-      user: user,
+      first_name: first_name,
+      last_name: last_name,
+      email: email,
+      city: city,
+      zip_code: zip_code,
       charge_id: charge.id ? charge.id : null,
       amount: charges,
       type: payment_method,

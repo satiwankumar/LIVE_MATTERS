@@ -11,9 +11,14 @@ const router = express.Router();
 router.post(
   "/pay",
   [
-    auth,
+    // auth,
     [
-      check("user", "user is required").not().isEmpty(),
+      check("first_name", "first_name is required").not().isEmpty(),
+      check("lastname", "lastname is required").not().isEmpty(),
+      check("email", "email is required").not().isEmpty(),
+      check("city", "city is required").not().isEmpty(),
+      check("zip_code", "zip_code is required").not().isEmpty(),
+
       check("payment_method", "payment_method is required").not().isEmpty(),
       check("charges", " charges is required").not().isEmpty(),
       check("card_number", "card_number is required").not().isEmpty(),
